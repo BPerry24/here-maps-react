@@ -7,6 +7,7 @@ import { HEvents, events, Events } from './utils/map-events';
 import { usePlatform } from './hooks/use-platform';
 import { useScript } from './hooks/use-script';
 import { useLink } from './hooks/use-link';
+// import { screenToGeo } from './hooks/screen-to-geo';
 
 export interface HEREMapProps extends H.Map.Options, HEvents {
   appId: string;
@@ -116,6 +117,21 @@ export const HEREMap: React.FC<HEREMapProps> = ({
       if (typeof window !== 'undefined') {
         window.addEventListener('resize', debouncedResizeMap);
       }
+
+      if (map) {
+        map.addEventListener(
+          'tap',
+          (event: any) => {
+            const coords = map.screenToGeo(
+              event.currentPointer.viewportX,
+              event.currentPointer.viewportY,
+            );
+            const stringifiedCoords = JSON.stringify(coords);
+            localStorage.coordsStr = stringifiedCoords;
+          },
+          false,
+        );
+      }
     }
 
     return () => {
@@ -186,5 +202,3 @@ export const HEREMap: React.FC<HEREMapProps> = ({
     </MapContext.Provider>
   );
 };
-
-export default HEREMap;

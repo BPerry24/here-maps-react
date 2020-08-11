@@ -7,7 +7,6 @@ export function usePlatform(
   const [platform, setPlatform] = React.useState<
     H.service.Platform | undefined
   >(undefined);
-
   React.useEffect(() => {
     if (!platform && scriptsLoaded) {
       setPlatform(new H.service.Platform(platformOptions));

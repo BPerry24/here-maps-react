@@ -16,6 +16,7 @@ export const Circle: React.FC<CircleProps> = ({
   lineWidth,
   fillColor,
   radius,
+  ...rest
 }) => {
   const mapContext = React.useContext(MapContext);
   const [circle, setCircle] = React.useState<H.map.Circle>();
@@ -38,13 +39,14 @@ export const Circle: React.FC<CircleProps> = ({
           },
         },
       );
+
       map.addObject(newCircle);
 
       setCircle(newCircle);
     }
     return () => {
       if (map && circle) {
-        map.removeObject(circle);
+        // setCircle(undefined);
       }
     };
   }, [circle, fillColor, lat, lineWidth, lng, mapContext, radius, strokeColor]);
