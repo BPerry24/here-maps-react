@@ -1,10 +1,10 @@
 {
-  "name": "here-maps-react",
-  "version": "1.1.0",
+  "name": "busie-here-maps-react",
+  "version": "0.2.0",
   "description": "React components library for HERE Maps",
-  "author": "Gustavo Ordaz <ordazgustavo@gmail.com>",
+  "author": "Eli Cleveland <elicleveland@gmail.com>",
   "license": "MIT",
-  "repository": "ordazgustavo/here-maps-react",
+  "repository": "https://bradyperry@bitbucket.org/busie/busie-here-maps-react.git",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "engines": {
