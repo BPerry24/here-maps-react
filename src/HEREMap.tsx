@@ -131,6 +131,20 @@ export const HEREMap: React.FC<HEREMapProps> = ({
           },
           false,
         );
+        map.addEventListener(
+          'mapviewchange',
+          (event: any) => {
+            const currentZoom = map.getZoom();
+            const currentCenter = map.getCenter();
+            const formattedCenter = {
+              lat: currentCenter.lat,
+              lng: currentCenter.lng,
+            };
+            localStorage.currentZoom = currentZoom;
+            localStorage.currentCenter = JSON.stringify(formattedCenter);
+          },
+          false,
+        );
       }
     }
 
